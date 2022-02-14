@@ -3,36 +3,36 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: flaskdemo
-  name: flaskdemo
+    app: spring-petclinic
+  name: spring-petclinic
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: flaskdemo
+      app: spring-petclinic
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: flaskdemo
+        app: spring-petclinic
     spec:
       containers:
-      - image: raj80dockerid/test:6
-        name: flaskdemo
+      - image: chielvis1/spring-petclinic:0
+        name: spring-petclinic
         resources: {}
 status: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: lb-service
+  name: spring-petclinic
   labels:
-    app: lb-service
+    app: spring-petclinic
 spec:
   type: LoadBalancer
   ports:
   - port: 80
     targetPort: 5000
   selector:
-    app: flaskdemo
+    app: spring-petclinic
