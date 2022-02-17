@@ -18,7 +18,7 @@ spec:
         app: spring-petclinic
     spec:
       containers:
-      - image: chielvis1/spring-petclinic:0
+      - image: chielvis1/spring-petclinic
         name: spring-petclinic
         resources: {}
 status: {}
@@ -32,7 +32,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 80
+  - port: 8080
     targetPort: 5000
   selector:
     app: spring-petclinic
