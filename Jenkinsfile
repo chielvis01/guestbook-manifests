@@ -16,11 +16,11 @@ node {
                         sh "git config user.name ElvisChi"
                         sh "git checkout master"
                         sh "cat deployment.yaml"
-                        sh "sed -i 's+chielvis1/spring-petclinic.*+chielvis1/guestbook:${DOCKERTAG}+g' deployment.yaml"
+                        sh "sed -i 's+chielvis1/guestbook.*+chielvis1/guestbook:${DOCKERTAG}+g' deployment.yaml"
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/spring-petclinic-kubernetes-manifests.git HEAD:master"
+                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/guestbook-manifests.git HEAD:master"
       }
     }
   }
