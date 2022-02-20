@@ -1,38 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
-  labels:
-    app: spring-petclinic
-  name: spring-petclinic
+  name: guestbook-ui
 spec:
-  replicas: 3
+  replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: spring-petclinic
-  strategy: {}
+      app: guestbook-ui
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: spring-petclinic
+        app: guestbook-ui
     spec:
       containers:
-      - image: chielvis1/spring-petclinic
-        name: spring-petclinic
-        resources: {}
-status: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: spring-petclinic
-  labels:
-    app: spring-petclinic
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 8080
-    targetPort: 5000
-  selector:
-    app: spring-petclinic
+      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+        name: guestbook-ui
+        ports:
+        - containerPort: 80
